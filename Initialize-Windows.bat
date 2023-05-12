@@ -28,3 +28,10 @@ if '%errorlevel%' NEQ '0' (
     pushd "%CD%"
     CD /D "%~dp0"
 :--------------------------------------
+
+echo You're now running an elevated command prompt!
+
+:: Disable common Windows settings which cause suggested content, apps, tips, and advertisements
+PowerShell.exe -ExecutionPolicy Bypass -File ""%~dp0/dependencies\Disable-Settings.ps1""
+
+pause
