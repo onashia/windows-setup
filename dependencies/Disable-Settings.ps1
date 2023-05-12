@@ -5,9 +5,6 @@
         The functions in this script will disable Suggestions, Tips, and Recommendations in Windows 10 and 11    
 #>
 
-Disable-Welcome
-
-
 function Disable-Welcome {
     <#
         .SYNOPSIS
@@ -25,3 +22,5 @@ function Disable-Welcome {
 
     New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force
 }
+
+Disable-Welcome
