@@ -20,7 +20,7 @@ function Disable-Welcome {
         New-Item -Path $RegistryPath -Force | Out-Null
     }
 
-    New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force
+    New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
 }
 
 function Disable-Suggestions {
@@ -38,7 +38,7 @@ function Disable-Suggestions {
         New-Item -Path $RegistryPath -Force | Out-Null
     }
 
-    New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force
+    New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
 }
 
 function Disable-Tips {
@@ -56,9 +56,19 @@ function Disable-Tips {
         New-Item -Path $RegistryPath -Force | Out-Null
     }
 
-    New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force
+    New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
 }
 
+Write-Host "Disabling common Windows settings which causes advertisement and unwanted notifications`n"
+
+# Disable Windows welcome experience
+Write-Host "1) Disabling Windows welcome experience."
 Disable-Welcome
+
+# Disable suggestions on device setup
+Write-Host "2) Disabling suggestions on device setup."
 Disable-Suggestions
+
+# Disable tips and suggestions
+Write-Host "3) Disabling tips and suggestions in Windows"
 Disable-Tips
