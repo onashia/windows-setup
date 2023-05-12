@@ -11,10 +11,10 @@ function Disable-Welcome {
             Disables the setting "Show the Windows welcome experience after updates and when signed in to show what's new and suggested"
     #>
 
-    $RegistryPath = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager'
-    $Name         = 'SubscribedContent-310093Enabled'
-    $Value        = '0'
-    $Type         = 'DWORD'
+    $RegistryPath   = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager'
+    $Name           = 'SubscribedContent-310093Enabled'
+    $Value          = '0'
+    $Type           = 'DWORD'
 
     if (-NOT (Test-Path $RegistryPath)) {
         New-Item -Path $RegistryPath -Force | Out-Null
@@ -23,4 +23,19 @@ function Disable-Welcome {
     New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force
 }
 
+function Disable-Suggestions {
+    <#
+        .SYNOPSIS
+            Disable the setting "Suggest ways to get the most out of Windows and finish setting up this device"
+    #>
+
+    $RegistryPath   = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement'
+    $Name           = 'ScoobeSystemSettingEnabled'
+    $Value          = '0'
+    $Type           = 'DWORD'
+
+    New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force
+}
+
 Disable-Welcome
+Disable-Suggestions
