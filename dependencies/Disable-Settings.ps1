@@ -34,6 +34,10 @@ function Disable-Suggestions {
     $Value          = '0'
     $Type           = 'DWORD'
 
+    if (-NOT (Test-Path $RegistryPath)) {
+        New-Item -Path $RegistryPath -Force | Out-Null
+    }
+
     New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force
 }
 
