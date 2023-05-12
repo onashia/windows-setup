@@ -41,5 +41,24 @@ function Disable-Suggestions {
     New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force
 }
 
+function Disable-Tips {
+    <#
+        .SYNOPSIS
+            Disable the setting "Get tips and suggestions when I use Windows"
+    #>
+
+    $RegistryPath   = 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager'
+    $Name           = 'SubscribedContent-338389Enabled'
+    $Value          = '0'
+    $Type           = 'DWORD'
+
+    if (-NOT (Test-Path $RegistryPath)) {
+        New-Item -Path $RegistryPath -Force | Out-Null
+    }
+
+    New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force
+}
+
 Disable-Welcome
 Disable-Suggestions
+Disable-Tips
