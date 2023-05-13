@@ -34,4 +34,7 @@ echo You're now running an elevated command prompt!
 :: Disable common Windows settings which cause suggested content, apps, tips, and advertisements
 PowerShell.exe -ExecutionPolicy Bypass -File ""%~dp0\dependencies\Disable-Settings.ps1""
 
+:: Enable location services and allow location for Weather app.
+PowerShell.exe -ExecutionPolicy Bypass -File ""%~dp0\dependencies\Enable-Location.ps1""
+
 pause
