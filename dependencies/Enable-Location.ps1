@@ -62,11 +62,11 @@ function Enable-WeatherLocation {
 Write-Host "Enable settings in Windows for location services and ensure Weather app is using current location.`n"
 
 # Enable location services on system.
-Write-Host "1) Enabling location services.""
+Write-Host "1) Enabling location services."
 Enable-SystemLocation
 
 # Enable app access to location
-Write-Host "2) Allowing apps access to location.""
+Write-Host "2) Allowing apps access to location."
 Enable-UserLocation
 
 # Enable location for Microsoft Weather
