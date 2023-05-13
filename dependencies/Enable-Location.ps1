@@ -47,7 +47,7 @@ function Enable-WeatherLocation {
             Enable location services for the Microsoft Weather app.
     #>
 
-    $RegistryPath   = 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location\Microsoft.BingWeather_8wekyb3d8bbwe'
+    $RegistryPath   = 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location\Microsoft.BingWeather_8wekyb3d8bbwe'
     $Name           = 'Value'
     $Value          = 'Allow'
     $Type           = 'String'
