@@ -70,5 +70,8 @@ Write-Host "2) Disabling suggestions on device setup."
 Disable-Suggestions
 
 # Disable tips and suggestions
-Write-Host "3) Disabling tips and suggestions in Windows"
+Write-Host "3) Disabling tips and suggestions in Windows."
 Disable-Tips
+
+# End of file
+Write-Host "`n"
