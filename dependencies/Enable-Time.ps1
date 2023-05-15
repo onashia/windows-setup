@@ -47,7 +47,7 @@ function Enable-TimeZone {
             Enable "set the time zone automatically" setting.
     #>
 
-    $RegistryPath   = 'HKLM\SYSTEM\CurrentControlSet\Services\tzautoupdate'
+    $RegistryPath   = 'HKLM:\SYSTEM\CurrentControlSet\Services\tzautoupdate'
     $Name           = 'Start'
     $Value          = '3'
     $Type           = 'DWORD'
