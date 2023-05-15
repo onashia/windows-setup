@@ -37,4 +37,7 @@ PowerShell.exe -ExecutionPolicy Bypass -File ""%~dp0\dependencies\Disable-Settin
 :: Enable location services and allow location for Weather app.
 PowerShell.exe -ExecutionPolicy Bypass -File ""%~dp0\dependencies\Enable-Location.ps1""
 
+:: Enable automatic date and time detection.
+PowerShell.exe -ExecutionPolicy Bypass -File ""%~dp0\dependencies\Enable-Time.ps1""
+
 pause
