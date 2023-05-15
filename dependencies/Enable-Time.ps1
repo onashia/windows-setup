@@ -59,7 +59,7 @@ function Enable-TimeZone {
     New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
 }
 
-Write-Host "Enable settings to set the time and date automatically.`n"
+Write-Host "Enable settings to set the time and date automatically. You will still need to wait for the time to sync, or manually sync it before changes will appear.`n"
 
 Write-Host "1) Enabling automatic time."
 Enable-Time

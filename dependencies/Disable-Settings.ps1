@@ -59,7 +59,7 @@ function Disable-Tips {
     New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
 }
 
-Write-Host "Disabling common Windows settings which causes advertisement and unwanted notifications`n"
+Write-Host "Disabling common Windows settings which cause advertisement and unwanted notifications`n"
 
 # Disable Windows welcome experience
 Write-Host "1) Disabling Windows welcome experience."
