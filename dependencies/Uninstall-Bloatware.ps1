@@ -49,4 +49,4 @@ Disable-Installation
 
 # Disable suggestions in the Start Menu.
 Write-Host "2) Disabling app suggestions in the Start Menu"
-Disable-Suggestions
+# Commented out as this only applies to Windows 10 - Disable-Suggestions
