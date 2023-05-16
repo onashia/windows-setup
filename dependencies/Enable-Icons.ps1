@@ -2,18 +2,42 @@
     .SYNOPSIS
         Enable common icons on the Desktop.
     .DESCRIPTION
-        This script will place icons for This PC, Recycle Bin, and Control Panel on the users Desktop.
+        This script will place icons for This PC, User Directory, Recycle Bin, and Control Panel on the users Desktop.
 #>
 
 function Enable-ThisPC {
     <#
         .SYNOPSIS
-            Enable a Desktop icon for "This PC" setting.
+            Enable a Desktop icon for "This PC".
     #>
 
-    $PanelRegistryPath  = 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel'
-    $ManuRegistryPath   = 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu'
+    $PanelRegistryPath  = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel'
+    $ManuRegistryPath   = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu'
     $Name               = '{20D04FE0-3AEA-1069-A2D8-08002B30309D}'
+    $Value              = '0'
+    $Type               = 'DWORD'
+
+    if (-NOT (Test-Path $PanelRegistryPath)) {
+        New-Item -Path $PanelRegistryPath -Force | Out-Null
+    }
+
+    if (-NOT (Test-Path $ManuRegistryPath)) {
+        New-Item -Path $ManuRegistryPath -Force | Out-Null
+    }
+
+    New-ItemProperty -Path $PanelRegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
+    New-ItemProperty -Path $ManuRegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
+}
+
+function Enable-User {
+    <#
+        .SYNOPSIS
+            Enable a Desktop icon for "User Folder".
+    #>
+
+    $PanelRegistryPath  = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel'
+    $ManuRegistryPath   = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu'
+    $Name               = '{59031a47-3f72-44a7-89c5-5595fe6b30ee}'
     $Value              = '0'
     $Type               = 'DWORD'
 
@@ -32,11 +56,11 @@ function Enable-ThisPC {
 function Enable-Recycle {
     <#
         .SYNOPSIS
-            Enable a Desktop icon for "Recycle Bin" setting.
+            Enable a Desktop icon for "Recycle Bin".
     #>
 
-    $PanelRegistryPath  = 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel'
-    $ManuRegistryPath   = 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu'
+    $PanelRegistryPath  = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel'
+    $ManuRegistryPath   = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu'
     $Name               = '{645FF040-5081-101B-9F08-00AA002F954E}'
     $Value              = '0'
     $Type               = 'DWORD'
@@ -56,11 +80,11 @@ function Enable-Recycle {
 function Enable-Control {
     <#
         .SYNOPSIS
-            Enable a Desktop icon for "Recycle Bin" setting.
+            Enable a Desktop icon for "Recycle Bin".
     #>
 
-    $PanelRegistryPath  = 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel'
-    $ManuRegistryPath   = 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu'
+    $PanelRegistryPath  = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel'
+    $ManuRegistryPath   = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu'
     $Name               = '{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}'
     $Value              = '0'
     $Type               = 'DWORD'
@@ -83,12 +107,15 @@ Write-Host "Show common icons on the Desktop. Icons will not show until Desktop 
 Write-Host "1) Enable shortcut for This PC"
 Enable-ThisPC
 
+# Create "User Folder" shortcut
+Write-Host "2) Enable shortcut for the User Folder"
+
 # Create "Recycle Bin" shortcut
-Write-Host "2) Enable shortcut for Recycle Bin"
+Write-Host "3) Enable shortcut for Recycle Bin"
 Enable-Recycle
 
 # Create "Control Panel" shortcut
-Write-Host "3) Enable shortcut for Control Panel"
+Write-Host "4) Enable shortcut for Control Panel"
 Enable-Control
 
 # End of file
