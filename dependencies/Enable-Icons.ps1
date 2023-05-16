@@ -77,7 +77,7 @@ function Enable-Control {
     New-ItemProperty -Path $ManuRegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
 }
 
-Write-Host "Show common icons on the Desktop.`n"
+Write-Host "Show common icons on the Desktop. Icons will not show until Desktop is refreshed.`n"
 
 # Create "This PC" shortcut
 Write-Host "1) Enable shortcut for This PC"
