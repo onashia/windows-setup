@@ -39,4 +39,7 @@ PowerShell.exe -ExecutionPolicy Bypass -File ""%~dp0\dependencies\Enable-Locatio
 :: Enable automatic date and time detection.
 PowerShell.exe -ExecutionPolicy Bypass -File ""%~dp0\dependencies\Enable-Time.ps1""
 
+:: Enable automatic date and time detection.
+PowerShell.exe -ExecutionPolicy Bypass -File ""%~dp0\dependencies\Enable-Icons.ps1""
+
 pause
