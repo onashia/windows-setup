@@ -17,8 +17,12 @@ function Enable-ThisPC {
     $Value              = '0'
     $Type               = 'DWORD'
 
-    if (-NOT (Test-Path $RegistryPath)) {
-        New-Item -Path $RegistryPath -Force | Out-Null
+    if (-NOT (Test-Path $PanelRegistryPath)) {
+        New-Item -Path $PanelRegistryPath -Force | Out-Null
+    }
+
+    if (-NOT (Test-Path $ManuRegistryPath)) {
+        New-Item -Path $ManuRegistryPath -Force | Out-Null
     }
 
     New-ItemProperty -Path $PanelRegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
@@ -37,8 +41,12 @@ function Enable-Recycle {
     $Value              = '0'
     $Type               = 'DWORD'
 
-    if (-NOT (Test-Path $RegistryPath)) {
-        New-Item -Path $RegistryPath -Force | Out-Null
+    if (-NOT (Test-Path $PanelRegistryPath)) {
+        New-Item -Path $PanelRegistryPath -Force | Out-Null
+    }
+
+    if (-NOT (Test-Path $ManuRegistryPath)) {
+        New-Item -Path $ManuRegistryPath -Force | Out-Null
     }
 
     New-ItemProperty -Path $PanelRegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
@@ -57,8 +65,12 @@ function Enable-Control {
     $Value              = '0'
     $Type               = 'DWORD'
 
-    if (-NOT (Test-Path $RegistryPath)) {
-        New-Item -Path $RegistryPath -Force | Out-Null
+    if (-NOT (Test-Path $PanelRegistryPath)) {
+        New-Item -Path $PanelRegistryPath -Force | Out-Null
+    }
+
+    if (-NOT (Test-Path $ManuRegistryPath)) {
+        New-Item -Path $ManuRegistryPath -Force | Out-Null
     }
 
     New-ItemProperty -Path $PanelRegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
