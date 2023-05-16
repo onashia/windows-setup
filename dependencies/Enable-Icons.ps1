@@ -77,13 +77,19 @@ function Enable-Control {
     New-ItemProperty -Path $ManuRegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
 }
 
-Write-Host "Show common icons on the Desktop."
+Write-Host "Show common icons on the Desktop.`n"
 
+# Create "This PC" shortcut
 Write-Host "1) Enable shortcut for This PC"
 Enable-ThisPC
 
+# Create "Recycle Bin" shortcut
 Write-Host "2) Enable shortcut for Recycle Bin"
 Enable-Recycle
 
+# Create "Control Panel" shortcut
 Write-Host "3) Enable shortcut for Control Panel"
 Enable-Control
+
+# End of file
+Write-Host "`n"

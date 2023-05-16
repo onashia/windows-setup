@@ -61,12 +61,15 @@ function Enable-TimeZone {
 
 Write-Host "Enable settings to set the time and date automatically. You will still need to wait for the time to sync, or manually sync it before changes will appear.`n"
 
+# Turn on automatic time adjustment
 Write-Host "1) Enabling automatic time."
 Enable-Time
 
+# Turn on automatic daylight savings time detection
 Write-Host "2) Enabling automatic daylight saving time detection."
 Enable-Daylight
 
+# Turn on automatic time zone detection
 Write-Host "3) Enabling automic time zone detection."
 Enable-TimeZone
 
