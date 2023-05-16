@@ -21,7 +21,8 @@ function Enable-ThisPC {
         New-Item -Path $RegistryPath -Force | Out-Null
     }
 
-    New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
+    New-ItemProperty -Path $PanelRegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
+    New-ItemProperty -Path $ManuRegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
 }
 
 function Enable-Recycle {
@@ -40,7 +41,8 @@ function Enable-Recycle {
         New-Item -Path $RegistryPath -Force | Out-Null
     }
 
-    New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
+    New-ItemProperty -Path $PanelRegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
+    New-ItemProperty -Path $ManuRegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
 }
 
 function Enable-Control {
@@ -59,7 +61,8 @@ function Enable-Control {
         New-Item -Path $RegistryPath -Force | Out-Null
     }
 
-    New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
+    New-ItemProperty -Path $PanelRegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
+    New-ItemProperty -Path $ManuRegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
 }
 
 Write-Host "Show common icons on the Desktop."
