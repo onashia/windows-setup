@@ -59,7 +59,7 @@ function Enable-WeatherLocation {
     New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
 }
 
-Write-Host "Enable settings in Windows for location services and ensure Weather app is using current location.`n"
+Write-Host "Enable settings in Windows for location services and that Weather app is using current location.`n"
 
 # Enable location services on system.
 Write-Host "1) Enabling location services."
