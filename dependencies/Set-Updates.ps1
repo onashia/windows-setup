@@ -21,3 +21,6 @@ Write-Host "Adjusting Windows Update settings."
 # Enable updates for Microsoft products
 Write-Host "1) Enable updates for other Microsoft products when updating Windows."
 Set-MicrosoftUpdates
+
+# End of file
+Write-Host "`n"
