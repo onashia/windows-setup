@@ -41,15 +41,57 @@ function Disable-Suggestions {
     New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
 }
 
+function Uninstall-MicrosoftBloatware {
+    <#
+        .SYNOPSIS
+            Remove bloatware pre-installed by Microsoft.
+    #>
+
+    # Variables
+    $Bloatware = @(
+
+        # Windows 10 and 11 AppX bloatware
+        "Microsoft.MicrosoftSolitaireCollection"
+        "Microsoft.SkypeApp"
+        "*EclipseManager*"
+        "*AdobeSystemsIncorporated.AdobePhotoshopExpress*"
+        "*Duolingo-LearnLanguagesforFree*"
+        "*PandoraMediaInc*"
+        "*CandyCrush*"
+        "*BubbleWitch3Saga*"
+        "*Wunderlist*"
+        "*Flipboard*"
+        "*Twitter*"
+        "*Facebook*"
+        "*Spotify*"
+        "*Minecraft*"
+        "*Royal Revolt*"
+        "*Disney*"
+        "clipchamp.clipchamp"
+    )
+
+    # Uninstall the apps
+    foreach ($Bloat in $Bloatware) {
+        Get-AppxPackage -allusers -Name $Bloat | Remove-AppxPackage -allusers
+        Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like $Bloat | Remove-AppxProvisionedPackage -Online
+        Write-Host "- Attempting to remove $Bloat."
+    }
+}
+
 Write-Host "Removing bloatware and disabling settings which automatically install suggested apps."
 
 # Disable automatic installation of suggested apps.
-Write-Host "1) Disabling automatic installation of suggested apps"
+Write-Host "1) Disabling automatic installation of suggested apps."
 Disable-Installation
 
 # Disable suggestions in the Start Menu.
-Write-Host "2) Disabling app suggestions in the Start Menu"
+Write-Host "2) Disabling app suggestions in the Start Menu."
 # Commented out as this only applies to Windows 10 - Disable-Suggestions
+
+# Remove Microsoft provided bloatware
+Write-Host "3) Uninstalling Microsoft provided bloatware."
+Uninstall-MicrosoftBloatware
+
 
 # End of file
 Write-Host "`n"
