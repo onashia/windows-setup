@@ -47,27 +47,41 @@ function Uninstall-MicrosoftBloatware {
             Remove bloatware pre-installed by Microsoft.
     #>
 
-    # Variables
+    # Windows 10 and 11 AppX bloatware
     $Bloatware = @(
 
-        # Windows 10 and 11 AppX bloatware
-        "Microsoft.MicrosoftSolitaireCollection"
-        "Microsoft.SkypeApp"
+        # Utilities
         "*EclipseManager*"
-        "*AdobeSystemsIncorporated.AdobePhotoshopExpress*"
+        "*AdobePhotoshopExpress*"
         "*Duolingo-LearnLanguagesforFree*"
         "*PandoraMediaInc*"
-        "*CandyCrush*"
-        "*BubbleWitch3Saga*"
         "*Wunderlist*"
         "*Flipboard*"
-        "*Twitter*"
-        "*Facebook*"
         "*Spotify*"
+        "*Disney*"
+        "*clipchamp*"
+        "*Netflix*"
+        "*DolbyAccess*"
+        "*DropboxOEM*"
+        "*McAfeeSecurity*"
+
+        # Games
+        "*MicrosoftSolitaireCollection*"
+        "*CandyCrush*"
+        "*BubbleWitch3Saga*"
         "*Minecraft*"
         "*Royal Revolt*"
-        "*Disney*"
-        "clipchamp.clipchamp"
+
+        # Social Media
+        "*SkypeApp*"
+        "*Twitter*"
+        "*Facebook*"
+        "*LinkedIn*"
+
+        # Shopping
+        "*eBay*"
+        "*Amazon*"
+        "*Booking*"
     )
 
     # Uninstall the apps
@@ -91,7 +105,6 @@ Write-Host "2) Disabling app suggestions in the Start Menu."
 # Remove Microsoft provided bloatware
 Write-Host "3) Uninstalling Microsoft provided bloatware."
 Uninstall-MicrosoftBloatware
-
 
 # End of file
 Write-Host "`n"
