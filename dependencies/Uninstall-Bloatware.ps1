@@ -59,7 +59,7 @@ function Uninstall-MicrosoftBloatware {
         "*Flipboard*"
         "*Spotify*"
         "*Disney*"
-        "*clipchamp*"
+        "*Clipchamp*"
         "*Netflix*"
         "*DolbyAccess*"
         "*DropboxOEM*"
