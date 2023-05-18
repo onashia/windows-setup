@@ -39,13 +39,13 @@ PowerShell.exe -ExecutionPolicy Bypass -File ""%~dp0\dependencies\Enable-Locatio
 :: Enable automatic date and time detection.
 PowerShell.exe -ExecutionPolicy Bypass -File ""%~dp0\dependencies\Enable-Time.ps1""
 
-:: Enable automatic date and time detection.
+:: Place common icons on the Desktop.
 PowerShell.exe -ExecutionPolicy Bypass -File ""%~dp0\dependencies\Enable-Icons.ps1""
 
-:: Enable automatic date and time detection.
+:: Set Windows Update settinsg to prefered defaults.
 PowerShell.exe -ExecutionPolicy Bypass -File ""%~dp0\dependencies\Set-Updates.ps1""
 
-:: Enable automatic date and time detection.
+:: Remove bloatware from the computer.
 PowerShell.exe -ExecutionPolicy Bypass -File ""%~dp0\dependencies\Uninstall-Bloatware.ps1""
 
 pause
