@@ -86,9 +86,11 @@ function Uninstall-MicrosoftBloatware {
 
     # Uninstall the apps
     foreach ($Bloat in $Bloatware) {
-        Get-AppxPackage -allusers -Name $Bloat | Remove-AppxPackage -allusers
-        Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like $Bloat | Remove-AppxProvisionedPackage -Online
-        Write-Host "- Attempting to remove $Bloat."
+        if (Get-AppxPackage -allusers -Name $Bloat) {
+            Get-AppxPackage -allusers -Name $Bloat | Remove-AppxPackage -allusers
+            Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like $Bloat | Remove-AppxProvisionedPackage -Online
+            Write-Host "- Attempting to remove $Bloat."
+        }
     }
 }
 
