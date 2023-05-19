@@ -94,6 +94,74 @@ function Uninstall-MicrosoftBloatware {
     }
 }
 
+function Uninstall-HPBloatware {
+    <#
+        .SYNOPSIS
+            Remove bloatware pre-installed by HP.
+    #>
+
+    # Windows 10 and 11 AppX bloatware
+    $Bloatware = @(
+
+        # Utilities
+        "*AMZNMobileLLC*"
+        "*myHP*"
+
+        # Games
+        "*RandomSaladGamesLLC*"
+
+        # Social Media
+        
+
+        # Shopping
+      
+
+    )
+
+    # Uninstall the apps
+    foreach ($Bloat in $Bloatware) {
+        if (Get-AppxPackage -allusers -Name $Bloat) {
+            Write-Host "- Attempting to remove $Bloat."
+            Get-AppxPackage -allusers -Name $Bloat | Remove-AppxPackage -allusers
+            Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like $Bloat | Remove-AppxProvisionedPackage -Online
+        }
+    }
+}
+
+function Uninstall-LenovoBloatware {
+    <#
+        .SYNOPSIS
+            Remove bloatware pre-installed by Lenovo.
+    #>
+
+    # Windows 10 and 11 AppX bloatware
+    $Bloatware = @(
+
+        # Utilities
+        "*McAfeeSecurity*"
+        "*AMZNMobileLLC*"
+
+        # Games
+        
+
+        # Social Media
+        
+
+        # Shopping
+      
+
+    )
+
+    # Uninstall the apps
+    foreach ($Bloat in $Bloatware) {
+        if (Get-AppxPackage -allusers -Name $Bloat) {
+            Write-Host "- Attempting to remove $Bloat."
+            Get-AppxPackage -allusers -Name $Bloat | Remove-AppxPackage -allusers
+            Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like $Bloat | Remove-AppxProvisionedPackage -Online
+        }
+    }
+}
+
 Write-Host "Removing bloatware and disabling settings which automatically install suggested apps."
 
 # Disable automatic installation of suggested apps.
